@@ -5,58 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Sentinel Settings</title>
     <style>
+      :root {
+        --bg: #070707;
+        --panel: #101010;
+        --panel-soft: #151515;
+        --text: #f5f1ea;
+        --muted: #b8aea0;
+        --line: #2f2218;
+        --accent: #ff7a00;
+        --accent-strong: #ff9a2f;
+        --danger: #ff4d00;
+      }
+
       body {
-        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-family: "Bahnschrift", "Segoe UI Variable", "Trebuchet MS", sans-serif;
         margin: 24px;
-        color: #1c2b2a;
-        background: #f5faf9;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 92% 0%, rgba(255, 122, 0, 0.19), transparent 42%),
+          linear-gradient(180deg, #0d0d0d 0%, var(--bg) 100%);
       }
 
       .panel {
-        background: #fff;
-        border: 1px solid #d7e5e2;
+        background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+        border: 1px solid var(--line);
         border-radius: 12px;
-        padding: 16px;
-        max-width: 780px;
+        padding: 18px;
+        max-width: 940px;
+        box-shadow: inset 0 1px 0 rgba(255, 153, 66, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 122, 0, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 122, 0, 0.08) 1px, transparent 1px);
+        background-size: 28px 28px;
+        opacity: 0.22;
       }
 
       h1 {
         margin-top: 0;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: #ffb56d;
       }
 
       label {
         display: block;
-        font-weight: 600;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        font-size: 0.74rem;
         margin-bottom: 6px;
+        color: var(--muted);
       }
 
       input {
         width: 100%;
         padding: 10px;
-        border: 1px solid #bdd4d0;
+        border: 1px solid #493221;
+        background: #15110d;
+        color: var(--text);
         border-radius: 8px;
         margin-bottom: 10px;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.24);
       }
 
       button {
         border: 0;
         border-radius: 8px;
         padding: 10px 14px;
-        background: #0a7e74;
-        color: white;
-        font-weight: 600;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+        color: #1c120a;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
         cursor: pointer;
+        box-shadow: 0 0 0 1px #7d3f08, 0 8px 22px rgba(255, 122, 0, 0.32);
+        transition: transform 140ms ease, box-shadow 140ms ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 0 1px #9b4f0a, 0 12px 28px rgba(255, 122, 0, 0.4);
       }
 
       .status {
         margin: 10px 0;
-        color: #476664;
+        color: var(--muted);
+        letter-spacing: 0.03em;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 12px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
       }
 
       .actions {
@@ -66,25 +129,51 @@
       }
 
       .secondary-btn {
-        background: #e8f2f0;
-        color: #184844;
+        background: #2a1a0f;
+        color: #ffd7af;
+        box-shadow: 0 0 0 1px #5a3111;
       }
 
       .danger-btn {
-        background: #b53a3a;
+        background: linear-gradient(135deg, #a32600, var(--danger));
+        color: #ffe2d6;
+        box-shadow: 0 0 0 1px #791b00;
       }
 
       .small-btn {
         padding: 7px 10px;
-        font-size: 0.86rem;
+        font-size: 0.72rem;
       }
 
       th,
       td {
-        border-bottom: 1px solid #e2ecea;
+        border-bottom: 1px solid #2a1f16;
         text-align: left;
         padding: 8px;
-        font-size: 0.92rem;
+        font-size: 0.82rem;
+      }
+
+      th {
+        color: #ffb56d;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-size: 0.7rem;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          margin: 10px;
+        }
+
+        .panel {
+          padding: 12px;
+        }
+
+        th,
+        td {
+          font-size: 0.75rem;
+          padding: 6px;
+        }
       }
     </style>
   </head>

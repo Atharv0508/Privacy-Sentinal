@@ -1,11 +1,13 @@
 :root {
-  --bg: #f2f6f6;
-  --card: #ffffff;
-  --text: #132322;
-  --muted: #5f7572;
-  --primary: #0a7e74;
-  --danger: #b53a3a;
-  --warn: #ad6a00;
+  --bg: #070707;
+  --panel: #101010;
+  --panel-soft: #141414;
+  --text: #f6f2ea;
+  --muted: #b8aea2;
+  --primary: #ff7a00;
+  --primary-strong: #ff9b31;
+  --line: #2b2118;
+  --alert: #ff4d00;
 }
 
 * {
@@ -15,35 +17,63 @@
 body {
   margin: 0;
   width: 360px;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: "Bahnschrift", "Segoe UI Variable", "Trebuchet MS", sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top right, #d9ebe8 0%, var(--bg) 60%);
+  background:
+    radial-gradient(circle at 88% 2%, rgba(255, 122, 0, 0.2), transparent 38%),
+    linear-gradient(180deg, #0d0d0d 0%, var(--bg) 100%);
 }
 
 .container {
   padding: 14px;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 122, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 122, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.22;
 }
 
 h1 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.34rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .subtitle {
-  margin: 4px 0 12px;
+  margin: 4px 0 14px;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .scan-btn {
   width: 100%;
   border: 0;
-  border-radius: 10px;
-  padding: 10px;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #08635b, var(--primary));
+  border-radius: 11px;
+  padding: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #1a120b;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  box-shadow: 0 0 0 1px #7a3d08, 0 10px 26px rgba(255, 122, 0, 0.34);
   cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.scan-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px #a4520b, 0 14px 30px rgba(255, 122, 0, 0.42);
 }
 
 .scan-btn:disabled {
@@ -53,15 +83,17 @@ h1 {
 
 .status {
   margin: 10px 0 12px;
-  font-size: 0.85rem;
+  font-size: 0.79rem;
+  letter-spacing: 0.03em;
   color: var(--muted);
 }
 
 .result {
-  background: var(--card);
-  border: 1px solid #d6e3e1;
+  background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 153, 66, 0.1);
 }
 
 .hidden {
@@ -72,6 +104,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px dashed #2a2118;
 }
 
 .grid {
@@ -89,20 +123,22 @@ h1 {
 }
 
 .signal-card {
-  border: 1px solid #d6e3e1;
+  border: 1px solid #3a2718;
   border-radius: 10px;
   padding: 8px;
-  background: #f9fcfb;
+  background: #16120f;
 }
 
 .signal-card.alert {
-  border-color: #f2b3b3;
-  background: #fff7f7;
+  border-color: #743014;
+  background: #1d120d;
 }
 
 .label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
   color: var(--muted);
 }
 
@@ -114,12 +150,15 @@ h1 {
 .signal-card strong {
   display: block;
   margin-top: 4px;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 h2 {
   margin: 10px 0 8px;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffb56d;
 }
 
 ul {
@@ -129,7 +168,8 @@ ul {
 
 li {
   margin-bottom: 6px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 footer {
@@ -139,5 +179,7 @@ footer {
 
 a {
   color: var(--primary);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
