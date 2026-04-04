@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy Sentinel",
+  "description": "Monitors website cookies, analyzes tracking behavior, and generates privacy reports.",
+  "version": "1.0.0",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "cookies",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Privacy Sentinel",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html"
+}

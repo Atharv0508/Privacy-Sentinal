@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Sentinel</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Privacy Sentinel</h1>
+        <p class="subtitle">Cookie and tracking intelligence</p>
+      </header>
+
+      <button id="scanBtn" class="scan-btn">Scan Current Site</button>
+      <p id="status" class="status">Ready</p>
+
+      <section id="result" class="result hidden">
+        <div class="score-row">
+          <span>Risk Score</span>
+          <strong id="riskScore">0</strong>
+        </div>
+        <div class="score-row">
+          <span>Severity</span>
+          <strong id="severity">low</strong>
+        </div>
+        <div class="grid">
+          <div>
+            <span class="label">Total Cookies</span>
+            <div id="totalCookies" class="value">0</div>
+          </div>
+          <div>
+            <span class="label">3rd-Party</span>
+            <div id="thirdParty" class="value">0</div>
+          </div>
+          <div>
+            <span class="label">Tracking Indicators</span>
+            <div id="trackers" class="value">0</div>
+          </div>
+          <div>
+            <span class="label">Insecure Cookies</span>
+            <div id="insecure" class="value">0</div>
+          </div>
+        </div>
+
+        <h2>Page Privacy Signals</h2>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <span class="label">Microphone</span>
+            <strong id="microphoneSignal">Not detected</strong>
+          </div>
+          <div class="signal-card">
+            <span class="label">Camera</span>
+            <strong id="cameraSignal">Not detected</strong>
+          </div>
+          <div class="signal-card">
+            <span class="label">Location</span>
+            <strong id="locationSignal">Not detected</strong>
+          </div>
+          <div class="signal-card alert">
+            <span class="label">Third-Party Data</span>
+            <strong id="thirdPartyDataSignal">No alert</strong>
+          </div>
+        </div>
+
+        <h2>Top Recommendations</h2>
+        <ul id="recommendations"></ul>
+      </section>
+
+      <footer>
+        <a href="options.html" target="_blank" rel="noreferrer">Settings</a>
+      </footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
